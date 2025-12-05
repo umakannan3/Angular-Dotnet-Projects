@@ -1,0 +1,63 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+      Employee Management System
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header">
+              Create Employee
+            </div>
+            <div class="card-body">
+              <form [formGroup]="empForm" (ngSubmit)="OnSubmit()">
+                <div class="row">
+                  <div class="col-sm-12 mb-2">
+                    <label for="name">Name:</label>
+                    <input formControlName="name" type="text" id="name" class="form-control" />
+                  </div>
+                  <div class="col-sm-12 mb-2">
+                    <label for="name">Mobile No:</label>
+                    <input formControlName="mobileNo" type="text" id="name" class="form-control" />
+                  </div>
+                  <div class="col-sm-12 mb-4">
+                    <label for="name">Email ID:</label>
+                    <input formControlName="emailID" type="text" id="name" class="form-control" />
+                  </div>
+                  <div class="col-sm-12 mb-2">
+                    <button class="btn btn-primary float-end" type="submit">Create</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Mobile No</th>
+                <th>Email ID</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for(emp of employees() ; track emp) {
+              <tr>
+                <td>{{emp.name}}</td>
+                <td>{{emp.mobileNo}}</td>
+                <td>{{emp.emailID}}</td>
+                <td>
+                  <button class="btn btn-sm btn-info me-2" (click)="editEmployee(emp)">Edit</button>
+                  <button class="btn btn-sm btn-danger" (click)="deleteEmployee(emp.id)">Delete</button>
+                </td>
+              </tr>
+            }
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
